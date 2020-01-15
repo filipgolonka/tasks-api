@@ -16,4 +16,5 @@ npm run dev
 ## Todo
 
 * Joi validation
-* write tests
+* install ESLint
+* write more tests
