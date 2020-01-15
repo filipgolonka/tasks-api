@@ -1,8 +1,10 @@
 const { Router } = require('express');
 const jwt = require('jsonwebtoken');
 const { pickBy } = require('lodash');
-const config = require('../config');
+const getConfig = require('../config');
 const Task = require('../db/model/task');
+
+const config = getConfig();
 
 const isAuthorized = async (token) => {
     try {
