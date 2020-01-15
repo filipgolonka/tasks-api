@@ -13,6 +13,10 @@ npm install
 npm run dev
 ```
 
+## Create local user
+
+run `node scripts/create-user.js` script or modify it and then run
+
 ## Code linting
 
 `npm run lint`
