@@ -36,3 +36,7 @@ In development environment it is useful to run it in watch mode:
 
 * provide more Joi validation
 * write more tests
+* db error handling in task routes
+* break src/routes/task.js file - it is too big
+* isolate routes from database layer
+* rewrite to typescript
