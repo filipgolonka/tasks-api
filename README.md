@@ -4,9 +4,13 @@
 
 * node v12
 * nvm (optional)
-* docker-compose 
+* docker-compose  (optional)
 
 ## Usage
+
+If you don't have local MongoDB instance, you can use provided docker-compose implementation:
+
+``docker-compose up -d`
 
 ```
 npm install
