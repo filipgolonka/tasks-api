@@ -12,7 +12,7 @@ const isAuthorized = async (token) => {
 
         return true;
     } catch (error) {
-        console.error(error);
+        process.env.NODE_ENV !== 'test' && console.error(error);
     }
 
     return false;
@@ -22,7 +22,7 @@ const authMiddleware = async (req, res, next) => {
     const token = req.body.token || req.query.token;
 
     if (!await isAuthorized(token)) {
-        return res.send(401, { message: 'Unauthorized' });
+        return res.status(401).send({ message: 'Unauthorized' });
     }
 
     return next();

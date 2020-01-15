@@ -9,9 +9,7 @@ describe('POST routes/task', () => {
     });
 
     afterEach(async () => {
-        const connection = server.get('database').connection;
-        await Task.remove();
-        connection.close();
+        await Task.deleteMany();
     });
 
     it('returns 401 when user is not authorized', async () => {

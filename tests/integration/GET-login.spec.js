@@ -15,19 +15,29 @@ describe('GET routes/login', () => {
     });
 
     afterEach(async () => {
-        const connection = server.get('database').connection;
-        await User.remove();
-        connection.close();
+        await User.deleteMany();
     });
 
     it('returns 404 when user does not exist', async () => {
         expect.assertions(2);
 
         const { status, body} = await request(server)
-            .post('/v1/login');
+            .post('/v1/login')
+            .send({ email: 'jane@doe.com', password: 'not-test' });
 
         expect(status).toBe(404);
         expect(body).toEqual({ message: 'User does not exist'});
+    });
+
+    it('returns 400 when data is incomplete', async () => {
+        expect.assertions(2);
+
+        const { status, body} = await request(server)
+            .post('/v1/login')
+            .send({ email: 'john@doe.com' });
+
+        expect(status).toBe(400);
+        expect(body).toEqual({});
     });
 
     it('creates token', async () => {
